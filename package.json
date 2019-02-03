@@ -1,6 +1,6 @@
 {
-  "name": "bem-example",
-  "version": "1.0.0",
+  "name": "ystu-ui-kit",
+  "version": "2.0.0",
   "description": "RedstarDigitalAgency example project",
   "main": "gulpfile.js",
   "dependencies": {
@@ -9,24 +9,33 @@
     "gulp-autoprefixer": "^6.0.0",
     "gulp-cache": "^1.1.0",
     "gulp-clean": "^0.4.0",
-    "gulp-concat": "^2.6.1",
     "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-csscomb": "^3.0.8",
-    "gulp-pug-linter": "^1.1.0",
-    "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.0.2",
-    "gulp-rename": "^1.4.0",
     "gulp-imagemin": "^5.0.3",
+    "gulp-pug": "^4.0.1",
+    "gulp-pug-linter": "^1.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-bulk-import": "^1.0.1",
     "gulp-sass-lint": "^1.4.0",
     "gulp-uglify-es": "^1.0.4",
     "gulp-watch": "^5.0.1",
-    "imagemin-pngquant": "^7.0.0",
-    "imagemin-mozjpeg": "^8.0.0"
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^7.0.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "RedstarDigitalAgency",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedstarDigitalAgency/ystu-uikit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RedstarDigitalAgency/ystu-uikit/issues"
+  },
+  "homepage": "https://github.com/RedstarDigitalAgency/ystu-uikit#readme"
 }

@@ -19,7 +19,7 @@ const cache = require('gulp-cache');
 const clean = require('gulp-clean');
 const watch = require('gulp-watch');
 const browsersync = require("browser-sync").create();
-
+const bulkSass = require('gulp-sass-bulk-import');
 
 const devDir = './project/dev/';
 const prodDir = './project/prod/';
@@ -35,7 +35,8 @@ gulp.task('browser-sync', () => {
 
 gulp.task('sass', () => {
     return gulp
-        .src(devDir + 'blocks/**/*.sass')
+        .src(devDir + 'conf/main.sass')
+        .pipe(bulkSass())
         .pipe(sass({outputStyle: 'expanded'}))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(csscomb())
@@ -47,11 +48,12 @@ gulp.task('sass', () => {
         .pipe(browsersync.stream());
 });
 
+
 gulp.task('js', () => {
     return gulp
         .src(devDir + 'blocks/**/*.js')
         .pipe(concat('main.js'))
-        .pipe(gulp.dest('./dist/js'))
+        .pipe(gulp.dest(prodDir + 'js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
         .pipe(gulp.dest(prodDir + 'js'))
@@ -68,10 +70,13 @@ gulp.task('pug', () => {
 
 
 gulp.task('watch', () => {
+
+    gulp.watch(devDir + 'conf/**/*.sass', gulp.series('sass')).on('change', browsersync.reload);
     gulp.watch(devDir + 'blocks/**/*.sass', gulp.series('sass')).on('change', browsersync.reload);
-    gulp.watch(devDir + 'blocks/**/*.js', gulp.series('js'));
-    gulp.watch(devDir + 'blocks/**/*.pug', gulp.series('pug'));
-    gulp.watch(devDir + 'pages/*.pug', gulp.series('pug'));
+    gulp.watch(devDir + 'blocks/**/*.js', gulp.series('js')).on('change', browsersync.reload);
+    gulp.watch(devDir + 'blocks/**/*.pug', gulp.series('pug')).on('change', browsersync.reload);
+    gulp.watch(devDir + 'pages/*.pug', gulp.series('pug')).on('change', browsersync.reload);
+
 });
 
 
